@@ -62,12 +62,9 @@ class Mail
         if (!$iResult) {
             $aData = ['from' => $sFromMail, 'fromName' => $sFromName, 'to' => $sToMail, 'subject' => $sSubject, 'body' => $sContents];
             $iResult = (int)$this->phpMail($aData);
-            //$iResult = (int)$this->trimite_mail($sToMail,'',$sSubject,$sContents,'');
+
         }
         
-        //file_put_contents('../err.log', $iResult);
-        //$aData = ['from' => $sFromMail, 'fromName' => $sFromName, 'to' => $sToMail, 'subject' => $sSubject, 'body' => $sContents];
-        //$iResult = (int)$this->phpMail($aData);
         return $iResult;
     }
 
@@ -94,7 +91,6 @@ class Mail
         $sHeaders .= "Content-Type: text/html; charset=\"utf-8\"\r\n";
 
         /** Send Email ***/
-        //return @mail($aParams['to'], $aParams['subject'], $aParams['body'], $sHeaders);
         return $this->sendmail_PHPMailer($aParams['from'],$aParams['fromName'],$aParams['to'],'',$aParams['subject'],$aParams['body'],'');
     }
     
@@ -150,8 +146,6 @@ $mail->addReplyTo($replyto);
 //$mail->addCC('cc@example.com');
 //$mail->addBCC('admin@matros.ro');
 
-//$mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
-//$mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
 $mail->isHTML(true);                                  // Set email format to HTML
 
 $mail->Subject = $subject;
@@ -167,9 +161,5 @@ if(!$mail->send()) {
     return true;
 } 
 
-
-
-}    
-    
-    
+}        
 }
